@@ -21,7 +21,7 @@ class Pan < Formula
   depends_on "pango"
 
   def install
-    # brew provides enchant-2, which is accepted for the pan build but needs include dir changed
+    # brew provides enchant-2, which is accepted for the pan build but needs include dir changed in source
     inreplace  "pan/gui/group-prefs-dialog.cc", "<enchant/enchant.h>", "<enchant-2/enchant.h>"
 
     # use brew name for gtk3 version of tool update-icon-cache
