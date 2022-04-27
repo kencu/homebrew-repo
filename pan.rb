@@ -1,8 +1,8 @@
 class Pan < Formula
   desc "Usenet newsreader that's good at both text and binaries"
   homepage "https://pan.rebelbase.com"
-  url "https://pan.rebelbase.com/download/releases/0.147/source/pan-0.147.tar.bz2"
-  sha256 "997a98fb92c75b45b99e07cccd9c5e5d7433dcc50a35b0270ad564e054d4c024"
+  url "https://pan.rebelbase.com/download/releases/0.149/source/pan-0.149.tar.bz2"
+  sha256 "5d34d0d7dbb73ee53484ffe173f01d8b2c0732126ec21d8cf29d6baa5ecb85ea"
   license "GPL-2.0-only"
 
   depends_on "itstool" => :build
@@ -26,9 +26,6 @@ class Pan < Formula
 
     # use brew name for gtk3 version of tool update-icon-cache
     inreplace  "pan/icons/Makefile.in", "gtk-update-icon-cache", "gtk3-update-icon-cache"
-
-    # fix typo in one file, should be upstreamed
-    inreplace  "pan/gui/actions.cc", "constrol", "control"
 
     ENV.append "LDFLAGS", "-liconv"
 
