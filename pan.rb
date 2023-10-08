@@ -30,10 +30,9 @@ class Pan < Formula
     ENV.append "LDFLAGS", "-liconv"
     ENV.append "CXXFLAGS", "-std=c++11"
 
-    # there is a better way to do this rather than hardcode it, I'm certain
-    ENV.append "CPPFLAGS", "-I/opt/homebrew/Cellar/gnutls/3.8.1/include -I/opt/homebrew/Cellar/enchant/2.6.1/include"
+    ENV.append "CPPFLAGS", "-I${includedir}/gnutls -I${includedir}enchant"
 
-    system "./autogen.sh"
+    system "NOCONFIGURE=1 ./autogen.sh"
     system "./configure", *std_configure_args,
                           "--disable-silent-rules",
                           "--with-gnutls"
