@@ -30,6 +30,8 @@ class Pan < Formula
     ENV.append "LDFLAGS", "-liconv"
     ENV.append "CXXFLAGS", "-std=c++11"
 
+    # the includes for these packages are not plumbed everywhere they need to be
+    # in the upstream source, so we add them manually here
     ENV.append "CPPFLAGS", "-I${includedir}/gnutls -I${includedir}enchant"
 
     system "NOCONFIGURE=1 ./autogen.sh"
