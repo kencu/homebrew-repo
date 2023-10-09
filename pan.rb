@@ -30,8 +30,9 @@ class Pan < Formula
     ENV.append "LDFLAGS", "-liconv"
     ENV.append "CXXFLAGS", "-std=c++11"
 
-    # the includes for these packages are not plumbed everywhere they need to be
-    # in the upstream source, so we add them manually here
+    # The includes for these packages are not plumbed everywhere they need to be
+    # so we add them manually here. This is not needed for the MacPorts build,
+    # and why these additions are needed here is not entirely clear at present.
     ENV.append "CPPFLAGS", "-I${includedir}/gnutls -I${includedir}enchant"
 
     system "NOCONFIGURE=1 ./autogen.sh"
