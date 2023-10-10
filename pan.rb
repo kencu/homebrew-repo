@@ -5,8 +5,8 @@ class Pan < Formula
   sha256 "440317954df7217689100df3dfb68865770f5aed1b8ed2b45432d771bb80a8c9"
   license "GPL-2.0-only"
 
-  depends_on "automake" => :build
   depends_on "autoconf" => :build
+  depends_on "automake" => :build
   depends_on "itstool" => :build
   depends_on "pkg-config" => :build
   depends_on "adwaita-icon-theme"
@@ -23,17 +23,11 @@ class Pan < Formula
   depends_on "pango"
 
   def install
-
     # use brew name for gtk3 version of tool update-icon-cache
     inreplace  "pan/icons/Makefile.am", "gtk-update-icon-cache", "gtk3-update-icon-cache"
 
     ENV.append "LDFLAGS", "-liconv"
     ENV.append "CXXFLAGS", "-std=c++11"
-
-    # The includes for these packages are not plumbed everywhere they need to be
-    # so we add them manually here. This is not needed for the MacPorts build,
-    # and why these additions are needed here is not entirely clear at present.
-    ENV.append "CPPFLAGS", "-I${includedir}/gnutls -I${includedir}enchant"
 
     system "NOCONFIGURE=1 ./autogen.sh"
     system "./configure", *std_configure_args,
