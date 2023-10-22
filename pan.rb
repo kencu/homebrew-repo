@@ -38,7 +38,6 @@ class Pan < Formula
   end
 
   test do
-    # this application does not appear to have a straightforward test that is more complex
     assert_match shell_output("#{bin}/pan --version"), "Pan" + " " + version.to_s
   end
 end
